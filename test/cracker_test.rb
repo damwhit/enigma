@@ -40,53 +40,19 @@ class CrackerTest < Minitest::Test
     refute sliced_message.count > 4
   end
 
-
-  def test_cracker_can_find_rotators
-    skip
-    new_message = Cracker.new("hello")
-    new_message.end_value
-    new_message.original_value
-    new_message.difference
-    found_rotators = new_message.find_rotators
-
-    assert_equal [28, 18, 14, 0, 35], found_rotators
-  end
-  #
-  # def test_encrypted_message_does_not_rotate_the_incorrect_amount
-  #   new_message = Cracker.new("hello", 12345, 161215)
-  #   new_message.message_value
-  #   new_message.slice_message
-  #   rotated_message = new_message.rotate_message
-  #   refute_equal [25, 22, 8, 22, 32], rotated_message
-  # end
   def test_cracker_can_find_message_value
     new_message = Cracker.new("hello")
     message_value = new_message.message_value
     assert_equal [7, 4, 11, 11, 14], message_value
   end
-  #
-  # def test_decrypt_message_yields_a_string
-  #   new_message = Cracker.new("z3iw6", 12345, 161215)
-  #   new_message.message_value
-  #   new_message.slice_message
-  #   new_message.rotate_message
-  #   decrypted_message = new_message.decrypt_message
-  #   assert_equal "hello", decrypted_message
-  # end
-  #
-  # def test_decrypt_message_yields_an_decrypted_message
-  #   new_message = Cracker.new("z3iw6w8jw,ajq", 12345, 161215)
-  #   new_message.message_value
-  #   new_message.slice_message
-  #   new_message.rotate_message
-  #   decrypted_message = new_message.decrypt_message
-  #   assert_equal "hello ..end..", decrypted_message
-  # end
-  #
-  # def test_decrypt_message_yields_a_string_the_same_length_as_original_message
-  #   new_message = Cracker.new("hello ..end..", 12345, 161215)
-  #   decrypted_message = new_message.decrypt_message
-  #   assert_equal 13, decrypted_message.length
-  # end
+
+  def test_crack_message_yields_a_decrypted_message
+    new_message = Cracker.new("z3iw6w8jw,ajq")
+    new_message.message_value
+    new_message.slice_message
+    new_message.rotate_message
+    cracked_message = new_message.crack_message
+    assert_equal "hello ..end..", cracked_message
+  end
 
 end

@@ -59,10 +59,3 @@ class Encryptor
   end
 
 end
-#
-# # # # # #
-new_encryptor = Encryptor.new("hello", 12345, 161215)
-new_encryptor.message_value
-new_encryptor.slice_message
-new_encryptor.rotate_message
-new_encryptor.encrypt_message

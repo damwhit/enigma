@@ -59,10 +59,3 @@ class Decryptor
   end
 
 end
-#
-# #
-new_decryptor = Decryptor.new("z3iw6", 12345, 161215)
-new_decryptor.message_value
-new_decryptor.slice_message
-new_decryptor.rotate_message
-new_decryptor.decrypt_message

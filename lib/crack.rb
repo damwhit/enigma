@@ -10,6 +10,6 @@ cracked_message = Cracker.new(message).crack_message
 
 File.write(ARGV[1], cracked_message)
 
-puts "Created '#{ARGV[1]}' with the key and date "
+puts "Created '#{ARGV[1]}' without the key or date "
 
 end
