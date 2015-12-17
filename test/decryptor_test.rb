@@ -53,6 +53,15 @@ class DecryptorTest < Minitest::Test
     assert_equal "hello", decrypted_message
   end
 
+  def test_decrypt_will_not_yield_a_fixnum
+    new_message = Decryptor.new("hello", 12345, 161215)
+    new_message.message_value
+    new_message.slice_message
+    new_message.rotate_message
+    decrypted_message = new_message.decrypt_message
+    refute_equal 12345, decrypted_message
+  end
+
   def test_decrypt_message_yields_an_decrypted_message
     new_message = Decryptor.new("z3iw6w8jw,ajq", 12345, 161215)
     new_message.message_value

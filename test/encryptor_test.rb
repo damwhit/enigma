@@ -53,6 +53,15 @@ class EncryptorTest < Minitest::Test
     assert_equal "z3iw6", encrypted_message
   end
 
+  def test_encrypt_will_not_yield_a_fixnum
+    new_message = Encryptor.new("hello", 12345, 161215)
+    new_message.message_value
+    new_message.slice_message
+    new_message.rotate_message
+    encrypted_message = new_message.encrypt_message
+    refute_equal 12345, encrypted_message
+  end
+
   def test_encrypt_message_yields_an_encrypted_message
     new_message = Encryptor.new("hello ..end..", 12345, 161215)
     new_message.message_value
