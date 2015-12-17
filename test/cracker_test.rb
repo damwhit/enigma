@@ -42,6 +42,7 @@ class CrackerTest < Minitest::Test
 
 
   def test_cracker_can_find_rotators
+    skip
     new_message = Cracker.new("hello")
     new_message.end_value
     new_message.original_value
