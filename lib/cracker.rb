@@ -45,7 +45,7 @@ class Cracker
   end
 
   def message_value
-    message_value = @message.map do |character|
+    @message.map do |character|
       CHAR_MAP.index(character)
     end
   end
@@ -70,7 +70,7 @@ class Cracker
           find_rotators[2]
         elsif index == 3
           find_rotators[3]
-        end
+                  end
         rotated_message << (character + rotation) % 39
       end
     end
